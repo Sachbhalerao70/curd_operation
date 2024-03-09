@@ -1,0 +1,75 @@
+{% include "app/header.html"%}
+<head>
+    <style>
+         .bordered-table {
+    border-collapse: collapse;
+    width: 70%;
+}
+
+.bordered-table th, .bordered-table td {
+    border: 1px dotted white;
+    padding: 2px;
+    text-align: center;
+}
+
+.bordered-table th {
+    background-color: #F25C05;
+}
+        .bordered-table td {
+    background-color: black;
+    color:white;
+}
+    </style>
+
+
+</head>
+<body>
+<div align="center">
+    <h1> Emplyess list</h1>
+
+    {% if objects%}
+    <table class="bordered-table">
+        <thead>
+        <th>id</th>
+        <th>name</th>
+        <th>salary</th>
+        <th>city</th>
+        <th>contact</th>
+        <th>department</th>
+        <th>Operation</th>
+
+
+        </thead>
+
+        {% for i in objects%}
+        <tr>
+            <td>{{i.eid}}</td>
+            <td>{{i.ename}}</td>
+            <td>{{i.esal}}</td>
+            <td>{{i.ecity}}</td>
+            <td>{{i.econtact}}</td>
+            <td>{{i.edepart}}</td>
+            <td>
+                <a href="/curd_app/update/{{i.eid}}" class="btn btn-success">update Data</a>
+             <a href="/curd_app/delete/{{i.eid}}" class="btn btn-danger">delete Data</a>
+            </td>
+
+        </tr>
+        {%endfor%}
+
+
+
+    </table>
+
+    {%else%}
+    <h2>not found</h2>
+    {%endif%}
+    <br>
+    <br>
+
+    <a href="/curd_app/appform/" class="btn btn-success">Insert Data</a>
+
+</div>
+
+</body>
+</html>
